@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>La Familia D'Pizza - Cardápio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../static/images/pizza.png" type="image/png">
+    <link href="../static/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <input id="username" value="{{ userId }}" disabled>
+    <!--<a href="https://br.freepik.com/vetores-gratis/bonito-pizza-comida-sorrindo-ilustracao-do-icone-do-vetor-dos-desenhos-animados-conceito-de-icone-de-objeto-de-comida-isolado-premium_33489358.htm#page=3&query=sad%20pizza%20icon&position=25&from_view=search&track=ais&uuid=80fb8439-956c-4548-8df0-127c8f8d1935">Imagem de catalyststuff</a> no Freepik-->
+</head>
+
+<body>
+    <!--navbar 1-->
+    <nav class="navbar sticky-top bg-body-tertiary navbar-um" style="background-color: #BE3144 !important;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center text-light" href="/"><img class="me-2"
+                    src="../static/images/pizza.png" style="height: 25px;">La Familia D'Pizza</a>
+
+            <div>
+                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-search text-light" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </nav>
+
+    <!--canvas pesquisa-->
+    <div class="offcanvas offcanvas-alto offcanvas-start offcanvas-pesquisa" tabindex="-1" id="offcanvasTop"
+        aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasTopLabel">Pesquisar</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <!--corpo canvas-->
+        <div class="offcanvas-body p-0">
+
+            <div class="input-group m-0 p-0 mb-2">
+                <!--form pesquisa-->
+                <input id="pesquisa-input" type="text" class="form-control" placeholder="O que deseja?"
+                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary red-bg" type="button" id="button-addon2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                </button>
+            </div>
+
+            <!--resultados-->
+            <div class="resultados-pesquisa p-2">
+
+                {% for item in comida %}
+
+                {% if item.habilitado == 1 %}
+
+                <div class="card card-pesquisa mb-3 produto" data-id="{{item.id}}" >
+                    <div class="row g-0">
+                        <div class="col-sm-4">
+                            <img src="{{ item.img }}" class="img-fluid rounded-start h-100" alt="{{item.nome}}">
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="card-body card-body-index card-pesquisa h-100 d-flex flex-column">
+                                <div class="align-self-start flex-fill">
+                                    <h5 class="card-title">{{ item.nome }}</h5>
+                                    <p class="card-text">{{ item.descricao }}</p>
+                                </div>
+
+                                <div class="d-flex align-items-end">
+                                    <h4 class="text-end mb-0 mt-2">R$ {{ "{:.2f}".format(item.valor) }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endif %}
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+
+    <!--inicio-->
+    <div clas="mb-5">
+        <section class="inicio-header">
+            <div class="inicio-bg d-flex align-items-center justify-content-center">
+                <div class="inicio-inner">
+                    <div class="inicio-corpo d-flex align-items-center justify-content-center">
+                        <div class="inicio-texto text-center">
+                            <img class="inicio-logo" src="../static/images/pizza.png">
+                            <h1>La Familia D'Pizza</h1>
+
+                            <div class="d-flex align-items-center justify-content-center ">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-geo-alt-fill text-danger me-2" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                                </svg>
+                                <h5>Av Paulista, 1500 - São Paulo SP</h5>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-clock-fill text-danger me-2" viewBox="0 0 16 16">
+                                    <path
+                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z" />
+                                </svg>
+                                <h5>Seg - Sexta <br> das 18h às 00h</h5>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!--navbar 2-->
+    <nav id="navbar-example2" class="navbar sticky-top bg-body-tertiary navbar-dois p-0 mb-5"
+        style="background-color: white !important;">
+        <div class="container-fluid justify-content-center">
+            <ul class="nav nav-pills flex-nowrap overflow-x-auto">
+                <li>
+                    <a class="nav-link" href="#scrollspyHeading1">Pizzas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#scrollspyHeading2">Pizzas doces</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#scrollspyHeading3">Esfihas</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#scrollspyHeading4">Bebidas</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--CATEGORIAS HOME-->
+    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
+        data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary px-0 rounded-2" tabindex="0"
+        style="background-color: #ffffff !important;">
+
+        <!--renomeie "panelsStayOpen-collapseOnew" para ter um único em cada accordion (ELE É MENCIONADO 3 VEZES DENTRO DA DIV PAI)-->
+        <div class="accordion mb-5" id="accordionPanelsStayOpenExample">
+            <!--Scroll spy heading-->
+            <div class="accordion-item" id="scrollspyHeading1">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseOne">
+                        <h5>Pizzas</h5>
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+
+                        <div class="row d-flex align-items-center justify-content-center display-table">
+
+                            {% for item in comida %}
+
+                                {% if item.tipo == "pizza" and item.habilitado == 1 %}
+
+                                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 g-3 d-flex align-items-center justify-content-center child">
+                                        <div class="card mb-3 produto" data-id="{{item.id}}">
+                                            <div class="row g-0">
+                                                <div class="col-lg-4">
+                                                    <img src="{{item.img}}" class="img-card rounded-start" alt="{{item.nome}}">
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="card-body card-body-index card-home d-flex flex-column">
+                                                        <div class="align-self-start flex-fill">
+                                                            <h5 class="card-title">{{ item.nome }}</h5>
+                                                            <p class="card-text">{{ item.descricao }}</p>
+                                                        </div>
+
+                                                        <div class="d-flex align-items-end">
+                                                            <h4 class="text-end mb-0 mt-2">R$ {{ "{:.2f}".format(item.valor) }}
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--renomeie "panelsStayOpen-collapseOnew" para ter um único em cada accordion (ELE É MENCIONADO 3 VEZES DENTRO DA DIV PAI)-->
+        <div class="accordion mb-5" id="accordionPanelsStayOpenExample">
+            <!--Scroll spy heading-->
+            <div class="accordion-item" id="scrollspyHeading2">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne2" aria-expanded="true" aria-control
+                        s="panelsStayOpen-collapseOne2">
+                        <h5>Pizzas Doces</h5>
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne2" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+
+                        <div class="row d-flex align-items-center justify-content-center display-table">
+
+                            {% for item in comida %}
+
+                            {% if item.tipo == "pizza_doce" and item.habilitado == 1 %}
+
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 g-3 d-flex align-items-center justify-content-center child">
+                                <div class="card mb-3 produto" data-id="{{item.id}}">
+                                    <div class="row g-0">
+                                        <div class="col-lg-4">
+                                            <img src="{{item.img}}" class="img-card rounded-start" alt="{{item.nome}}">
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <div class="card-body card-body-index card-home d-flex flex-column">
+                                                <div class="align-self-start flex-fill">
+                                                    <h5 class="card-title">{{ item.nome }}</h5>
+                                                    <p class="card-text">{{ item.descricao }}</p>
+                                                </div>
+
+                                                <div class="d-flex align-items-end">
+                                                    <h4 class="text-end mb-0 mt-2">R$ {{ "{:.2f}".format(item.valor) }}
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% endif %}
+
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--renomeie "panelsStayOpen-collapseOnew" para ter um único em cada accordion (ELE É MENCIONADO 3 VEZES DENTRO DA DIV PAI)-->
+        <div class="accordion mb-5" id="accordionPanelsStayOpenExample">
+            <!--Scroll spy heading-->
+            <div class="accordion-item" id="scrollspyHeading3">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne3" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseOne3">
+                        <h5>Esfihas</h5>
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne3" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+
+                        <div class="row d-flex align-items-center justify-content-center display-table">
+
+                            {% for item in comida %}
+
+                            {% if item.tipo == "esfiha" and item.habilitado == 1 %}
+
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 g-3 d-flex align-items-center justify-content-center child">
+                                <div class="card mb-3 produto" data-id="{{item.id}}">
+                                    <div class="row g-0">
+                                        <div class="col-lg-4">
+                                            <img src="{{item.img}}" class="img-card rounded-start" alt="{{item.nome}}">
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <div class="card-body card-body-index card-home d-flex flex-column">
+                                                <div class="align-self-start flex-fill">
+                                                    <h5 class="card-title">{{ item.nome }}</h5>
+                                                    <p class="card-text">{{ item.descricao }}</p>
+                                                </div>
+
+                                                <div class="d-flex align-items-end">
+                                                    <h4 class="text-end mb-0 mt-2">R$ {{ "{:.2f}".format(item.valor) }}
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% endif %}
+
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion mb-5" id="accordionPanelsStayOpenExample">
+            <!--Scroll spy heading-->
+            <div class="accordion-item" id="scrollspyHeading4">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne4" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseOne4">
+                        <h5>Bebidas</h5>
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne4" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+
+                        <div class="row d-flex align-items-center justify-content-center display-table">
+
+                            {% for item in comida %}
+
+                            {% if item.tipo == "bebida" and item.habilitado == 1 %}
+
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 g-3 d-flex align-items-center justify-content-center child">
+                                <div class="card mb-3 produto" data-id="{{item.id}}">
+                                    <div class="row g-0">
+                                        <div class="col-lg-4">
+                                            <img src="{{item.img}}" class="img-card rounded-start" alt="{{item.nome}}">
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <div class="card-body card-body-index card-home d-flex flex-column">
+                                                <div class="align-self-start flex-fill">
+                                                    <h5 class="card-title">{{ item.nome }}</h5>
+                                                    <p class="card-text">{{ item.descricao }}</p>
+                                                </div>
+
+                                                <div class="d-flex align-items-end">
+                                                    <h4 class="text-end mb-0 mt-2">R$ {{ "{:.2f}".format(item.valor) }}
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% endif %}
+
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--offcanvas sacola-->
+    <div class="offcanvas offcanvas-alto offcanvas-start offcanvas-sacola" tabindex="-1" id="sacola-offcanvas"
+        aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header m-0 p-3">
+            <h3 class="card-title m-2">Seu Pedido</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <!--corpo canvas-->
+        <div class="offcanvas-body p-2 d-flex flex-column">
+            <div class="d-flex flex-column flex-fill">
+ 
+                <div class="resultados-sacola mt-4">
+                    <div class="row w-100">
+                        <div class="col-2 ps-4">
+                            <p class="text-center">Qnt.</p>
+                        </div>
+                        <div class="col-10 p-0">
+                            <p class="text-center">Nome</p>
+                        </div>
+                    </div>
+                    
+                    <!--put jinja loop-->
+                    <ul class="list-group list-group ul-sacola">
+                    {% if sacola != 0 %}
+                        {% for i in sacola %}
+
+                           <li class="list-group-item li-sacola">
+                                <div class="row itemSacola" data-id="{{i.id}}" style="height: 20vh !important;">
+
+                                    <div class="col-2 d-flex align-items-center justify-content-center">
+                                        {{i.qnt}}x
+                                    </div>
+
+                                    <div class="col-10 d-flex align-items-center justify-content-center">
+
+                                        <div class="col-4 h-100">
+                                            <img src="{{i.img}}" class="img-fluid rounded-start" alt="" style="height: 20vh !important; width: 100% !important">
+                                        </div>
+
+                                        <div class="col-8 ms-3 d-flex flex-column card-sacola">
+                                            <div class="d-flex flex-column flex-fill">
+                                                <div class="align-self-start">
+                                                    <h5 class="card-title">{{i.nome}}</h5>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <div class="align-self-end">
+                                                    <p class="text-end mb-0 mt-2 text-secondary-emphasis fs-5">R$ {{"{:.2f}".format(i.valor) }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </li>
+                        
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+
+                </div>
+            </div>
+            <div>
+                <div class="d-grid gap-2 mt-3">
+                    <button id="btn-confirmar-pedido" class="btn btn-primary btn-danger" type="button">Confirmar Pedido</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!--offcanvas de info do produto que o usuário seleciona-->
+    <div class="offcanvas offcanvas-alto offcanvas-start offcanvas-info" tabindex="-1" id="info-offcanvas"
+        aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header m-0 p-3">
+            <h3 class="card-title produto-nome m-2">X</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <!--corpo canvas-->
+        <form class="offcanvas-body p-2 d-flex flex-column" id="form-info" action="/api/addSacola" method="post">
+            <div class="d-flex flex-column flex-fill">
+
+                <div class="d-flex align-items-center justify-content-center">
+                    <img src="#" class="img-fluid rounded produto-img img-info" alt="nome">
+                </div>
+
+                <p class="text-center produto-descricao m-4 fs-4">Y</p>
+                <div class="form-group">
+                    <label for="obsItem">Observação:</label>
+                    <textarea class="form-control" id="obsItem" name="obsItem" rows="2" placeholder="Exemplo: Sem cebola, ..." index="0"></textarea>
+                </div>
+            </div>
+
+            <div >
+                <div class="container-fluid mb-4">
+                    <h4 class="text-center mb-0 mt-2 produto-valor">R$ ZZ,zz</h4>
+
+                    <div class="d-flex align-items-center justify-content-center my-4">
+                        <!--menos-->
+                        <button type="button"
+                            class="btn btn-outline-danger btn-menos-prod btn-quantidade-produto menos-qnt">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-dash mx-3" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8" />
+                            </svg>
+                        </button>
+                        <input type="hidden" id="form-qnt" name="qnt" value="1">
+                        <input type="hidden" id="form-id" name="id" value="0">
+                        <input type="hidden" id="form-s" name="s" value="0">
+
+                        <p class="mx-4 my-0 text-center fs-5 p-0 qnt">1</p>
+
+                        <!--mais-->
+                        <button type="button"
+                            class="btn btn-outline-danger btn-mais-prod btn-quantidade-produto mais-qnt">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-plus mx-3" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                            </svg>
+                        </button>
+
+                    </div>
+                </div>
+                <div class="d-grid gap-2 mt-3">
+                    <button id="btn-info-add" class="btn btn-primary btn-danger" type="submit"
+                        data-id="0">Adicionar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--offcanvas CONFIRMAR PEDIDO-->
+    <div class="offcanvas offcanvas-alto offcanvas-start offcanvas-confirmar" tabindex="-1" id="confirmar-offcanvas"
+        aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header m-0 p-3">
+            <h3 class="card-title produto-nome m-2">Confirmar pedido</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <!--corpo canvas-->
+        <form class=" offcanvas-body p-2 d-flex flex-column" id="form-pedido" action="/api/confirmarpedido"
+            method="post">
+            <div class="d-flex flex-column flex-fill form-pedido-inner">
+
+                <p class="text-center">Antes de enviarmos seu pedido, precisamos confirmar algumas informações</p>
+
+                <div class="container mt-2">
+                    <h4>Contato</h4>
+                    <div class="row">
+                        <div class="col-md-6 campo-form">
+                            <label for="nome">Nome </label>
+                            <input type="text" id="nomeusr" name="nomeusr" class="form-control" required><br>
+                        </div>
+                        <div class="col-md-6 campo-form">
+                            <label for="fone">Celular com DDD</label>
+                            <input type="tel" id="fone" name="fone" class="form-control" required placeholder="11 99999-9999">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="container mt-4">
+                    <h4>Endereço</h4>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4 campo-form">
+                            <label>CEP</label>
+                            <input type="text" name="cep" class="form-control" required />
+                        </div>
+
+                        <div class="col-md-6 col-lg-4 campo-form">
+                            <label>Rua</label>
+                            <input type="text" name="rua" class="form-control" required/>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4 campo-form">
+                            <label>Número</label>
+                            <input type="text" name="num" class="form-control" required/>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4 campo-form">
+                            <label>Complemento</label>
+                            <input type="text" name="complemento" class="form-control" />
+                        </div>
+
+                        <div class="col-md-6 col-lg-4 campo-form">
+                            <label>Bairro</label>
+                            <input type="text" name="bairro" class="form-control" required />
+                        </div>
+
+                        <div class="col-md-6 col-lg-4 campo-form">
+                            <label>Cidade</label>
+                            <input type="text" name="cidade-estado" class="form-control" />
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="container mt-4">
+                    <h4>Pagamento</h4>
+                    <div class="row">
+                        <div class="col-md-12 campo-form">
+                            {% if sacola != 0 %}
+                                {% for i in sacola %}
+                                    <div class="d-flex justify-content-between me-2">
+                                        <p class="text-start p-0 m-0">{{i.qnt}}x {{i.nome}}</p>
+                                        <p class="text-end p-0 m-0">R$ {{"{:.2f}".format(i.valor) }}</p>
+                                    </div>
+                                
+                                {% endfor %}
+                                <h5 class="text-end me-2">TOTAL R$ {{"{:.2f}".format(total) }}</h5>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 campo-form">
+                            <p class="p-0 m-0 text-center">Método de pagamento:</p>
+                            <div class="campo-form-radio d-flex justify-content-evenly">
+                                <div class="m-2 text-center">
+                                    <label class="p-2">
+                                        <input type="radio" id="pagamentoCartao" name="pagamento" value="cartao">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                            fill="currentColor" class="bi bi-credit-card-fill m-2" viewBox="0 0 16 16">
+                                            <path
+                                                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1" />
+                                        </svg>
+                                    </label><br>Cartão
+                                </div>
+
+                                <div class="m-2 text-center">
+                                    <label class="p-2">
+                                        <input type="radio" id="pagamentoDinheiro" name="pagamento" value="dinheiro">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                            fill="currentColor" class="bi bi-cash-coin m-2" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8m5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0" />
+                                            <path
+                                                d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z" />
+                                            <path
+                                                d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1z" />
+                                            <path
+                                                d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z" />
+                                        </svg>
+                                    </label><br>Dinheiro
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div><!--antigo form-->
+
+            <div>
+                <div class="d-grid gap-2 mt-3">
+                    <button id="btn-info-add" class="btn btn-primary btn-danger" type="submit"
+                        data-id="0">Finalizar</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+
+    {% if sacola != 0 %}
+        <div class="sticky-bottom d-flex align-items-center justify-content-center nav-sacola">
+            <div class="d-flex align-items-center justify-content-center h-100 nav-sacola-inner rounded-top">
+                <div class="text-center w-100 h-100 p-3 d-flex align-items-center justify-content-center seus-pedidos">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-bag-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
+                    </svg>
+                    <p class="p-0 m-0 ms-2">Sua sacola</p>
+
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+    <!-- footer (fim da página)-->
+    <footer class="text-center footer mt-0">
+        <!-- espaçamento-->
+        <div class="container pt-4"></div>
+
+        <!-- conteúdo footer-->
+        <div class="container pb-0 ">
+
+            <!--linha com tudo do footer-->
+            <div class="row d-flex justify-content-center ">
+                <!-- coluna links footer -->
+                <div class="col-auto">
+                    <div class="container mb-4 mt-5" style="color: white;">
+                        <h3>Navegação</h3>
+
+                        <div class="pt-2">
+                            <a href="/" class="link-light link-underline link-underline-opacity-0">Home</a><br>
+                            <a href="/logout" class="link-light link-underline link-underline-opacity-0">Deletar sacola</a><br>
+                            <a href="/login" class="link-light link-underline link-underline-opacity-0">Login</a><br>
+                            
+                        </div>
+
+                    </div>
+                </div>
+                <!-- fim coluna links-->
+
+                <!-- coluna "Entre em Contato"-->
+                <div class="col-md-5 col-12">
+                    <!-- conteúdo-->
+                    <div class="container mb-4 mt-5" style="color: white;">
+                        <h3> Entre em contato</h3>
+
+                        <!-- linha insta e facebook-->
+                        <div class="row p-2">
+                            <!-- coluna instagram-->
+                            <div class="col text-end">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
+                                    class="bi bi-instagram" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                                </svg>
+                                @insta
+                            </div>
+                            <!-- coluna facebook-->
+                            <div class="col text-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-facebook" viewBox="0 0 16 16">
+                                    <path
+                                        d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                                </svg>
+                                @facebook
+                            </div>
+                        </div>
+                        <!-- fim linha insta e facebook-->
+
+                        <!-- linha telefone e email-->
+                        <div class="row">
+                            <!-- coluna telefone-->
+                            <div class="col text-end">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-telephone" viewBox="0 0 16 16">
+                                    <path
+                                        d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                                </svg>
+                                +55 11 99999-9999
+                            </div>
+                            <!-- coluna email-->
+                            <div class="col text-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-envelope" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+                                </svg>
+                                email@email.com
+                            </div>
+                        </div>
+                        <!-- fim linha telefone e email-->
+                    </div>
+                </div>
+
+                
+            </div>
+            <!--fim linha com tudo footer-->
+            <div class="row d-flex justify-content-center ">
+                <p class="m-3 text-light">
+                    Desenvolvido por <a href="https://github.com/GustavoQS"
+                        class="link-light link-underline link-underline-opacity-0">Gustavo Q Saraiva</a>
+                </p>
+            </div>
+        </div>
+        <!-- conteúdo footer -->
+    </footer>
+    <!-- fim footer-->
+    <script src="../static/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+</body>
+
+</html>

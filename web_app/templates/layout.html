@@ -1,0 +1,38 @@
+
+    {% block navfuncionarios %}
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-um sticky-top" style="background-color: #BE3144 !important;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center text-light" href="/">
+                <img class="me-2" src="../static/images/pizza.png" style="height: 25px;">Pizzaria X</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link text-light link-white" aria-current="page" href="/cardapio">Cardápio</a>
+                    <li class="nav-item dropdown link-white">
+                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Pedidos
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="/pedidos/cozinha">Cozinha</a></li>
+                          <li><a class="dropdown-item" href="/pedidos/entrega">Entrega</a></li>
+                          <li><a class="dropdown-item" href="/pedidos/entrega">Concluídos</a></li>
+                          <li><a class="dropdown-item" href="/pedidos/entrega">Cancelados</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown link-white">
+                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Funcionários
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="/registrar">Registrar novo funcionário</a></li>
+                          <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        </ul>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% endblock %}

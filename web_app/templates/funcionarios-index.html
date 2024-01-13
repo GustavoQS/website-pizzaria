@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>La Familia D'Pizza - Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../static/images/pizza.png" type="image/png">
+    <link href="../static/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-um sticky-top" style="background-color: #BE3144 !important;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center text-light" href="/">
+                <img class="me-2" src="../static/images/pizza.png" style="height: 25px;">La Familia D'Pizza</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link text-light link-white" aria-current="page" href="/cardapio">Cardápio</a>
+                    <li class="nav-item dropdown link-white">
+                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Pedidos
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="/pedidos/cozinha">Cozinha</a></li>
+                          <li><a class="dropdown-item" href="/pedidos/entrega">Entrega</a></li>
+                          <li><a class="dropdown-item" href="/pedidos/entrega">Concluídos</a></li>
+                          <li><a class="dropdown-item" href="/pedidos/entrega">Cancelados</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown link-white">
+                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Funcionários
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="/registrar">Registrar novo funcionário</a></li>
+                          <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        </ul>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+        <div class="container-fluid">
+            <h1 class="my-5 text-center">Bem vindo</h1>
+            <div class="row d-flex align-items-center justify-content-center mt-5">
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                    <a href="/cardapio">
+                        <figure class="figure fhome-figure">
+                            <img src="../static/images/cardapio.png" class="figure-img img-fluid rounded" alt="Cardápio">
+                            <figcaption class="figure-caption">Modificar itens do carápio</figcaption>
+                            <div class="fhome-figure-inner">
+                                <p class="fs-2 text-light ms-auto">Cardápio</p>
+                            </div>
+                        </figure>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                    <a href="/pedidos/cozinha">
+                        <figure class="figure fhome-figure">
+                            <img src="../static/images/lenha.png" class="figure-img img-fluid rounded" alt="Cozinha">
+                            <figcaption class="figure-caption">Pedidos a serem preparados</figcaption>
+                            <div class="fhome-figure-inner">
+                                <p class="fs-2 text-light">Cozinha</p>
+                            </div>
+                        </figure>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                    <a href="/pedidos/entrega">
+                        <figure class="figure fhome-figure">
+                            <img src="../static/images/pizza-embalada.png" class="figure-img img-fluid rounded" alt="Entrega">
+                            <figcaption class="figure-caption">Pedidos em rota</figcaption>
+                            <div class="fhome-figure-inner">
+                                <p class="fs-2 text-light">Entrega</p>
+                            </div>
+                        </figure>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

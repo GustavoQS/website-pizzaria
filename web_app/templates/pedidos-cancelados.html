@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>La Familia D'Pizza - Pedidos Cancelados</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../static/images/pizza.png" type="image/png">
+    <link href="../static/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-um sticky-top"  style="background-color: #BE3144 !important;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center text-light" href="/"><img class="me-2" src="../static/images/pizza.png" style="height: 25px;">La Familia D'Pizza</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link text-light link-white" aria-current="page" href="/cardapio">Cardápio</a>
+                <li class="nav-item dropdown link-white">
+                    <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Pedidos
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/pedidos/cozinha">Cozinha</a></li>
+                      <li><a class="dropdown-item" href="/pedidos/entrega">Entrega</a></li>
+                      <li><a class="dropdown-item" href="/pedidos/entrega">Concluídos</a></li>
+                      <li><a class="dropdown-item" href="/pedidos/entrega">Cancelados</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown link-white">
+                    <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Funcionários
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/registrar">Registrar novo funcionário</a></li>
+                      <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    </ul>
+                </li>
+            </div>
+        </div>
+        </div>
+      </nav>
+
+
+    <!--navbar 2-->
+    <nav id="navbar-example2" class="navbar sticky-top bg-body-tertiary navbar-dois p-0 mb-5"
+        style="background-color: white !important;">
+        <div class="container-fluid justify-content-center">
+            <ul class="nav nav-pills flex-nowrap overflow-x-auto">
+                <li>
+                    <a class="nav-link" href="/pedidos/cozinha">Cozinha</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pedidos/entrega">Entrega</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/pedidos/concluidos">Concluídos</a>
+                </li>
+                <li>
+                    <a class="nav-link active" href="/pedidos/cancelados">Cancelados</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mb-4 d-flex align-items-center">
+        <h1>Pedidos Cancelados</h1>
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-check2 text-danger" viewBox="0 0 16 16">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+        </svg>
+    </div>
+    <div class="container">
+        <div class="card-container">
+            {% for order in pedidos %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Pedido #{{ order.id }}</h5>
+                    <p class="card-text mb-2 fs-5"><strong>Cliente:</strong> {{ order.nome }}</p>
+                    <p class="card-text mt-0"><strong>Telefone:</strong> {{ order.tel }}</p>
+                    
+                    <p class="card-text mb-2 fs-4"><strong>Horário:</strong> {{ order.dataHora[11:] }}</p>
+                    <p class="card-text"><strong>Data:</strong> {{ order.dataHora[:10] }}</p>
+                    <ul class="list-unstyled fs-5">
+                        <li><strong>Itens:</strong></li>
+                        {% for item in order.itens %}
+                        <li>{{ item.qnt }}x {{ item.nome }} {% if item.obsItem %} ({{ item.obsItem }}){% endif %}</li>
+                        {% endfor %}
+                    </ul>
+                    <p class="card-text mb-2 fs-5"><strong>CEP:</strong> {{ order.cep }}</p>
+                    <p class="card-text mb-2 fs-5"><strong>Rua:</strong> {{ order.rua }}, {{ order.num }} </p>
+                    <p class="card-text mb-2 fs-5"><strong>Obs:</strong> {{ order.obsEnd }}</p>
+                    <p class="card-text mb-2 fs-5"><strong>Pagamento:</strong> {{ order.pagamento }}</p>
+                    <p class="card-text mb-2 fs-5"><strong>Valor:</strong> R$ {{ "{:.2f}".format(order.valor) }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="../static/funcionarios-pedidos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

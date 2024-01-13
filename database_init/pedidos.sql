@@ -1,0 +1,20 @@
+INSERT INTO pedidos (pedidoId, nome, tel, cep, rua, num, obsEnd, valorT, pagamento, datahora, preparado, entregue, cancelado)
+VALUES
+('3c12fd35-d7c3-4a47-9c8b-6a45339d8e6e', 'John', '33 777777777', '01123040', 'Rua da Consolação', '456', 'Próximo à estação de metrô', 28.0, 'dinheiro', '2023-12-28 02:03:50', 0, 1, 0),
+('6da2dfe9-6a34-4b99-9ff4-8f78d65a4bc0', 'Emily', '44 666666666', '05432100', 'Rua Augusta', '789', 'Em frente ao teatro', 39.9, 'cartao', '2023-12-28 03:20:15', 1, 0, 0),
+('8c0496b4-6a0c-4f48-a7f2-3e8eb0fc4b6d', 'David', '55 555555555', '09123456', 'Avenida Liberdade', '1011', 'Próximo ao parque', 22.5, 'dinheiro', '2023-12-28 04:45:08', 0, 0, 1),
+('f40e6e4d-5b96-4322-85b7-4f2cc8f8f22a', 'Sophia', '66 444444444', '06789012', 'Rua Bela Cintra', '1313', 'Ao lado do shopping', 55.0, 'cartao', '2023-12-28 05:55:42', 1, 1, 0),
+('12f413d5-4c5c-40e5-b8b5-6f50f4a5c2f8', 'Daniel', '77 333333333', '02345678', 'Alameda Santos', '1515', 'Próximo à academia', 30.8, 'dinheiro', '2023-12-28 06:30:17', 1, 0, 0),
+('1b8c6759-1061-4c8c-9e07-9a0a6a3ab8ef', 'Mia', '88 222222222', '03456789', 'Rua Haddock Lobo', '1717', 'Perto do hospital', 42.3, 'cartao', '2023-12-28 07:42:59', 0, 1, 0),
+('2b3b7e18-bba7-4a98-8e8c-12d8bf3b7264', 'Oliver', '99 111111111', '01234567', 'Avenida Ipiranga', '1920', 'Ao lado da escola', 36.7, 'dinheiro', '2023-12-28 08:15:40', 1, 0, 0),
+('9fe4a27f-1770-4eaf-bc68-39b4f59e032e', 'Ava', '00 999999999', '05678901', 'Rua Oscar Freire', '2021', 'Próximo à boutique', 48.5, 'cartao', '2023-12-28 09:50:23', 0, 1, 0),
+('4b6321c0-8d01-4f56-ae8a-5c7b3b93e9df', 'Liam', '11 123456789', '07890123', 'Avenida Faria Lima', '222', 'Ao lado do escritório', 27.8, 'cartao', '2023-12-28 10:25:15', 1, 0, 0),
+('35f1b8d1-e7b0-41a5-8a2b-2f5f3a49f3c2', 'Emma', '22 234567890', '04561234', 'Rua Oscar Freire', '333', 'Próximo à livraria', 39.0, 'dinheiro', '2023-12-28 11:10:42', 0, 1, 0),
+('6ec84a1d-960a-4c18-8e68-81b2a7680da7', 'Noah', '33 345678901', '02340123', 'Alameda Santos', '444', 'Perto do museu', 51.2, 'cartao', '2023-12-28 12:45:30', 1, 1, 0),
+('bd2d14c9-38a4-4c4c-8cda-f4818c9a8bbf', 'Olivia', '44 456789012', '05671234', 'Rua Augusta', '555', 'Ao lado do cinema', 33.7, 'dinheiro', '2023-12-28 01:30:18', 0, 0, 1),
+('8a7fe6e1-6880-4e85-aafe-5d81c889eb6d', 'Sophia', '55 567890123', '07891234', 'Avenida Ipiranga', '666', 'Próximo ao bar', 46.5, 'cartao', '2023-12-28 02:15:55', 1, 0, 0),
+('f21c942f-0b42-4bf1-9c4a-7b057eb2f8df', 'Jackson', '66 678901234', '04562345', 'Rua Haddock Lobo', '777', 'Em frente ao teatro', 29.8, 'dinheiro', '2023-12-28 03:00:42', 1, 1, 0),
+('9de499db-01c4-4657-9e93-7a8c9cf4f890', 'Ava', '77 789012345', '02341234', 'Rua Bela Cintra', '888', 'Perto da loja', 42.0, 'cartao', '2023-12-28 04:35:30', 0, 0, 1),
+('e3b1be67-4801-4d1a-bf4d-1f6d0a31b7c1', 'Logan', '88 890123456', '05673456', 'Avenida Liberdade', '999', 'Ao lado da praça', 35.6, 'dinheiro', '2023-12-28 05:20:18', 1, 0, 0),
+('b3966de1-d6d1-4f1e-9fc6-7ae74b0149a2', 'Mia', '99 901234567', '07892345', 'Rua da Consolação', '1010', 'Próximo ao parque', 48.3, 'cartao', '2023-12-28 06:05:55', 0, 1, 0),
+('56f1b594-dfd1-4201-b15d-3e345d630c07', 'Liam', '00 012345678', '04563456', 'Rua Augusta', '1111', 'Perto da escola', 30.9, 'dinheiro', '2023-12-28 06:50:42', 1, 1, 0);

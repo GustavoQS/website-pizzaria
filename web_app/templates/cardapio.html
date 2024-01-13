@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>La Familia D'Pizza - Cardápio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../static/images/pizza.png" type="image/png">
+    <link href="../static/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-um sticky-top" style="background-color: #BE3144 !important;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center text-light" href="/">
+                <img class="me-2" src="../static/images/pizza.png" style="height: 25px;">La Familia D'Pizza</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link text-light link-white" aria-current="page" href="/cardapio">Cardápio</a>
+                    <li class="nav-item dropdown link-white">
+                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Pedidos
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="/pedidos/cozinha">Cozinha</a></li>
+                          <li><a class="dropdown-item" href="/pedidos/entrega">Entrega</a></li>
+                          <li><a class="dropdown-item" href="/pedidos/entrega">Concluídos</a></li>
+                          <li><a class="dropdown-item" href="/pedidos/entrega">Cancelados</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown link-white">
+                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Funcionários
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="/registrar">Registrar novo funcionário</a></li>
+                          <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        </ul>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid">
+        <h1 class="mt-4">Adicionar ao Carápio</h1>
+        
+        <div class="mt-5">
+            <div class="row d-flex align-items-center justify-content-center display-table">
+
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 g-3 d-flex align-items-center justify-content-center child">
+                            <div class="card mb-3 novo-item" data-id="">
+                                <div class="row g-0">
+                                    <div class="col-lg-4 d-flex align-items-center justify-content-center">
+                                        <img src="../static/images/add.png" class="rounded-start" alt="Imagem" style="height: 150px; width: 150px;">
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="card-body card-home d-flex flex-column">
+                                            <div class="align-self-start flex-fill">
+                                                <h5 class="card-title">Novo Item</h5>
+                                                <p class="card-text">Descrição</p>
+                                            </div>
+
+                                            <div class="d-flex align-items-end">
+                                                <h4 class="text-end mb-0 mt-2">R$ 00.00
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <h1 class="mt-4">Itens Desabilitados</h1>
+        <div class="row d-flex align-items-center justify-content-center display-table">
+            {% for i in cardapio %}
+                {% if i.habilitado == 0 %}
+                    
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 g-3 d-flex align-items-center justify-content-center child desabilitado">
+                                    <div class="card mb-3 desabilitado-item" data-id="{{i.id}}">
+                                        <div class="row g-0">
+                                            <div class="col-lg-4">
+                                                <img src="{{i.img}}" class="img-card rounded-start" alt="{{i.nome}}">
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <div class="card-body card-home d-flex flex-column">
+                                                    <div class="align-self-start flex-fill">
+                                                        <h5 class="card-title">{{ i.nome }}</h5>
+                                                        <p class="card-text">{{ i.descricao }}</p>
+                                                    </div>
+        
+                                                    <div class="d-flex align-items-end">
+                                                        <h4 class="text-end mb-0 mt-2">R$ {{ "{:.2f}".format(i.valor) }}
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <h1 class="mt-4">Editar Cardápio</h1>
+
+        <div class="mt-5">
+            <h5 class="mt-4">Pizzas</h5>
+            <div class="row d-flex align-items-center justify-content-center display-table">
+
+                {% for item in cardapio %}
+
+                    {% if item.tipo == "pizza" and item.habilitado == 1 %}
+
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 g-3 d-flex align-items-center justify-content-center child">
+                            <div class="card mb-3 produto" data-id="{{item.id}}">
+                                <div class="row g-0">
+                                    <div class="col-lg-4">
+                                        <img src="{{item.img}}" class="img-card rounded-start" alt="{{item.nome}}">
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="card-body card-home d-flex flex-column">
+                                            <div class="align-self-start flex-fill">
+                                                <h5 class="card-title">{{ item.nome }}</h5>
+                                                <p class="card-text">{{ item.descricao }}</p>
+                                            </div>
+
+                                            <div class="d-flex align-items-end">
+                                                <h4 class="text-end mb-0 mt-2">R$ {{ "{:.2f}".format(item.valor) }}
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endif %}
+
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <h5 class="mt-4">Pizzas Doces</h5>
+            <div class="row d-flex align-items-center justify-content-center display-table">
+
+                {% for item in cardapio %}
+
+                    {% if item.tipo == "pizza_doce" and item.habilitado == 1 %}
+
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 g-3 d-flex align-items-center justify-content-center child">
+                            <div class="card mb-3 produto" data-id="{{item.id}}">
+                                <div class="row g-0">
+                                    <div class="col-lg-4">
+                                        <img src="{{item.img}}" class="img-card rounded-start" alt="{{item.nome}}">
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="card-body card-home d-flex flex-column">
+                                            <div class="align-self-start flex-fill">
+                                                <h5 class="card-title">{{ item.nome }}</h5>
+                                                <p class="card-text">{{ item.descricao }}</p>
+                                            </div>
+
+                                            <div class="d-flex align-items-end">
+                                                <h4 class="text-end mb-0 mt-2">R$ {{ "{:.2f}".format(item.valor) }}
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endif %}
+
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <h5 class="mt-4">Esfihas</h5>
+            <div class="row d-flex align-items-center justify-content-center display-table">
+
+                {% for item in cardapio %}
+
+                    {% if item.tipo == "esfiha" and item.habilitado == 1 %}
+
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 g-3 d-flex align-items-center justify-content-center child">
+                            <div class="card mb-3 produto" data-id="{{item.id}}">
+                                <div class="row g-0">
+                                    <div class="col-lg-4">
+                                        <img src="{{item.img}}" class="img-card rounded-start" alt="{{item.nome}}">
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="card-body card-home d-flex flex-column">
+                                            <div class="align-self-start flex-fill">
+                                                <h5 class="card-title">{{ item.nome }}</h5>
+                                                <p class="card-text">{{ item.descricao }}</p>
+                                            </div>
+
+                                            <div class="d-flex align-items-end">
+                                                <h4 class="text-end mb-0 mt-2">R$ {{ "{:.2f}".format(item.valor) }}
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endif %}
+
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <h5 class="mt-4">Bebidas</h5>
+            <div class="row d-flex align-items-center justify-content-center display-table">
+
+                {% for item in cardapio %}
+
+                    {% if item.tipo == "bebida" and item.habilitado == 1 %}
+
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 g-3 d-flex align-items-center justify-content-center child">
+                            <div class="card mb-3 produto" data-id="{{item.id}}">
+                                <div class="row g-0">
+                                    <div class="col-lg-4">
+                                        <img src="{{item.img}}" class="img-card rounded-start" alt="{{item.nome}}">
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="card-body card-home d-flex flex-column">
+                                            <div class="align-self-start flex-fill">
+                                                <h5 class="card-title">{{ item.nome }}</h5>
+                                                <p class="card-text">{{ item.descricao }}</p>
+                                            </div>
+
+                                            <div class="d-flex align-items-end">
+                                                <h4 class="text-end mb-0 mt-2">R$ {{ "{:.2f}".format(item.valor) }}
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endif %}
+
+                {% endfor %}
+
+            </div>
+        </div>
+
+        
+    </div>
+
+        <!--offcanvas de info do produto que o usuário seleciona-->
+    <form class="offcanvas offcanvas-alto offcanvas-start offcanvas-info" tabindex="-1" id="info-offcanvas" aria-labelledby="offcanvasTopLabel" action="/cardapio" method="post">
+        <div class="offcanvas-header m-0 p-3">
+            <div class="input-group input-group-lg">
+                <span class="input-group-text " id="inputGroup-sizing-lg">Nome</span>
+                <input type="text" class="form-control produto-nome" aria-label="Sizing example input" name="nome" aria-describedby="inputGroup-sizing-lg">
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <!--corpo canvas-->
+        <div class="offcanvas-body p-4 d-flex flex-column">
+            <div class="d-flex flex-column flex-fill">
+                <input type="hidden" id="form-id" name="id" value="0">
+                <input type="hidden" id="form-produtoExistente" name="editar" value="">
+
+                <div class="d-flex align-items-center justify-content-center">
+                    <img src="#" class="img-fluid rounded produto-img img-info" alt="nome">
+                    
+                </div>
+                <div class="input-group input-group-sm mb-0 mt-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Imagem</span>
+                    <input type="text" class="form-control produto-img-input" name="img" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <label for="inputGroup-sizing-sm">obs: imagem só é atualizada após confirmar a edição no banco de dados</label>
+
+                <div class="input-group input-group-lg mt-4">
+                    <span class="input-group-text" id="inputGroup-sizing-lg">Descrição</span>
+                    <input type="text" class="form-control produto-descricao" name="descricao" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                  </div>
+
+            </div>
+
+            <div>
+                <div class="container-fluid mt-4">
+                    <div class="input-group mb-1">
+                        <span class="input-group-text">Valor</span>
+                        <span class="input-group-text">R$</span>
+                        <input type="text" class="form-control produto-valor" name="preco" aria-label="Use ponto com duas casas decimais. Exemplo: 35.99">
+                    </div>
+                    <label for="inputGroup-sizing-sm">Use ponto com duas casas decimais. Exemplo: 35.99</label>
+
+                    <div class="d-flex align-items-center justify-content-center my-4">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="opcaoTipo">Tipo</label>
+                            <select class="form-select" id="opcaoTipo" name="opcaoTipo">
+                              <option value="0">Escolha...</option>
+                              <option value="pizza">Pizza</option>
+                              <option value="pizza_doce">Pizza Doce</option>
+                              <option value="esfiha">Esfiha</option>
+                              <option value="bebida">Bebida</option>
+                            </select>
+                          </div>
+                    </div>
+                </div>
+                <div class="d-grid gap-3 mt-3">
+                    <button id="btn-confirmar-cardapio" class="btn btn-primary btn-success" type="submit" data-id="0">Editar</button>
+                    <button id="btn-pre-deletar" class="btn btn-primary btn-danger" data-id="0"><strong>Retirar do Cardápio</strong></button>
+                    
+                </div>
+            </div>
+        </div>
+    </form>
+
+        <!-- footer (fim da página)-->
+    <footer class="text-center footer mt-5">
+        <!-- espaçamento-->
+        <div class="container pt-4"></div>
+    
+        <!-- conteúdo footer-->
+        <div class="container-fluid p-0 m-0">
+            <div class="container mb-4 mt-5" style="color: white;">
+                <h3>Navegação</h3>
+                
+                <div class="d-flex align-items-center justify-content-center">
+                    <div class="p-4">
+                        <a href="/" class="link-light link-underline link-underline-opacity-0">Home</a><br>
+                        <a href="/login" class="link-light link-underline link-underline-opacity-0">Login</a><br>
+                        <a href="/logout" class="link-light link-underline link-underline-opacity-0">Logout</a><br>
+                        <a href="/registrar" class="link-light link-underline link-underline-opacity-0">Registrar funcionário</a><br>        
+                    </div>
+                    <div class="p-4">
+                        <a href="/pedidos/cozinha" class="link-light link-underline link-underline-opacity-0">Cozinha</a><br>
+                        <a href="/pedidos/entrega" class="link-light link-underline link-underline-opacity-0">Entrega</a><br>
+                        <a href="/cardapio" class="link-light link-underline link-underline-opacity-0">Editar Cardápio</a><br>
+                        <a href="/pedidos/concluidos" class="link-light link-underline link-underline-opacity-0">Pedidos Concluídos</a><br>
+                        <a href="/pedidos/cancelados" class="link-light link-underline link-underline-opacity-0">Pedidos Cancelados</a><br>        
+                    </div>
+                </div>
+                
+    
+            </div>
+        </div>
+            
+        <!--fim linha com tudo footer-->
+        <div class="d-flex justify-content-center ">
+            <p class="m-3 text-light">
+                Desenvolvido por <a href="https://github.com/GustavoQS" class="link-light link-underline link-underline-opacity-0">Gustavo Q Saraiva</a>
+            </p>
+        </div>
+        </div>
+            <!-- conteúdo footer -->
+    </footer>
+
+    <script src="../static/funcionarios-cardapio.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
