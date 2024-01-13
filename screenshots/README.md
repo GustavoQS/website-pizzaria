@@ -133,4 +133,4 @@ Funcionalidades que apenas os funcionários tem acesso, após passarem por um si
 
 Mensagem que aparece quando algum erro inesperado acontece.
 
-![error](https://github.com/GustavoQS/website-pizzaria/blob/master/screenshots/funcionario/error.png)
+![error](https://github.com/GustavoQS/website-pizzaria/blob/master/screenshots/error.png)
