@@ -51,11 +51,11 @@ Este projeto faz parte do meu portifólio, portanto, ficarei feliz de receber qu
 
 ## Tecnologias Utilizadas
 
-1. Frameworks
+### 1. Frameworks
    - [Flask](https://flask.palletsprojects.com/en/3.0.x/)
    - [Bootstrap v5.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 
-2. Bibliotecas
+### 2. Bibliotecas
    
    Conforme o arquivo [requiriments.txt](https://github.com/GustavoQS/webiste-pizzaria/blob/master/requirements.txt) gerado pelo pip, segue uma lista das bibliotecas utilizadas:
    - ﻿blinker v1.7.0
@@ -69,7 +69,7 @@ Este projeto faz parte do meu portifólio, portanto, ficarei feliz de receber qu
    - protobuf v4.21.12
    - Werkzeug v3.0.1
 
-3. Banco de dados
+### 3. Banco de dados
    
    - [MySQL](https://www.mysql.com/)
      - Por meio da biblioteca [mysql-connector-python](https://pypi.org/project/mysql-connector-python/)
