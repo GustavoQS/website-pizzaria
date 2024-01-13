@@ -57,7 +57,7 @@ Veja as funcionalidades que os clientes do website tem acesso
   - Este canvas fica visível quando o usuário seleciona a opção "Confirmar Pedido" na sacola.
   - Aqui que a [API ViaCep](https://viacep.com.br/) é utilizada.
 
-    ![confirmar](https://github.com/GustavoQS/website-pizzariaa/blob/master/screenshots/usuario/canvas-confirmarpedido.png)
+    ![confirmar](https://github.com/GustavoQS/website-pizzaria/blob/master/screenshots/usuario/canvas-confirmarpedido.png)
 
 ### Status do pedido
   - Após confirmar o pedido, o usuário pode verificar o status do mesmo, através do ID de pedido
