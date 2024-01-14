@@ -78,7 +78,7 @@ Este projeto faz parte do meu portifólio, portanto, ficarei feliz de receber qu
 
 ### 1. Pré-requisitos
 
-Para executar este projeto, é necessário ter o [Python 3.11](https://www.python.org/downloads/) instalado na máquina.
+Para executar este projeto, é necessário ter o [Python 3.11](https://www.python.org/downloads/) e o [MySQL](https://www.mysql.com/) instalados na máquina.
 
 ### 2. Instalação
 
@@ -104,7 +104,15 @@ $ git clone https://github.com/GustavoQS/webiste-pizzaria.git
 $ pip install -r requirements.txt
 ```
 
-### 5. Execute o projeto
+### 5. Crie o banco de dados MySQL
+
+- Abra a pasta [database_init](https://github.com/GustavoQS/website-pizzaria/tree/master/database_init) e execute o arquivo [init.sql](https://github.com/GustavoQS/website-pizzaria/blob/master/database_init/init.sql) para criar o banco de dados.
+
+- Opicional:
+  - Execute os demais arquivos .sql para inserir alguns dados pré definidos, como itens do cardápio, alguns pedidos e seus respectiovos itens.
+
+
+### 6. Execute o projeto
 
 ```
 $ python run.py
@@ -112,7 +120,9 @@ $ python run.py
 
 ### 6. Acesse o projeto
 
-- Acesse este [link](http://localhost:5000) no navegador de sua preferência
+- Acesse [localhost](http://localhost:5000) no navegador de sua preferência
+
+
 
 ## Contato
 
