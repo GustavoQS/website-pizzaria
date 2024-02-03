@@ -1,7 +1,7 @@
 ## La Família D'Pizza
 ![Preview-Screens](https://github.com/GustavoQS/webiste-pizzaria/blob/master/screenshots/preview.png)
 
-Veja mais imagens e um [vídeo](https://www.youtube.com/watch?v=cFS2MGdqH0w) do projeto em ação: [aqui](https://github.com/GustavoQS/webiste-pizzaria/tree/master/screenshots)
+Veja mais imagens e um [vídeo](https://www.youtube.com/watch?v=cFS2MGdqH0w) do projeto em ação: [aqui](https://github.com/GustavoQS/website-pizzaria/blob/master/screenshots/README.md)
 
 ## Descrição
 
