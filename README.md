@@ -1,7 +1,7 @@
 ## La Família D'Pizza
-![Preview-Screens](https://github.com/GustavoQS/webiste-pizzaria/blob/master/screenshots/preview.png)
+![Preview-Screens](./screenshots/preview.png)
 
-Veja mais imagens e um [vídeo](https://www.youtube.com/watch?v=cFS2MGdqH0w) do projeto em ação: [aqui](https://github.com/GustavoQS/website-pizzaria/blob/master/screenshots/README.md)
+Veja mais imagens e um [vídeo](https://www.youtube.com/watch?v=cFS2MGdqH0w) do projeto em ação: [aqui](./screenshots/README.md)
 
 ## Descrição
 
@@ -43,7 +43,7 @@ Este projeto faz parte do meu portifólio, portanto, ficarei feliz de receber qu
 
 ## Observações
 
-1. Dentro da pasta [database_init](https://github.com/GustavoQS/webiste-pizzaria/tree/master/database_init), existem arquivos .sql que executam querys para: criar o banco de dados (tabelas e etc.), inserir itens no cardápio e alguns pedidos (dados gerais e seus respectivos itens) 
+1. Dentro da pasta [database_init](./database_init), existem arquivos .sql que executam querys para: criar o banco de dados (tabelas e etc.), inserir itens no cardápio e alguns pedidos (dados gerais e seus respectivos itens) 
 
 2. Por enquanto, não existe nenhum sistema de pagamento. O sistema apenas informa se o cliente deseja pagar em dinheiro ou cartão.
 
@@ -57,7 +57,7 @@ Este projeto faz parte do meu portifólio, portanto, ficarei feliz de receber qu
 
 ### 2. Bibliotecas
    
-   Conforme o arquivo [requiriments.txt](https://github.com/GustavoQS/webiste-pizzaria/blob/master/requirements.txt) gerado pelo pip, segue uma lista das bibliotecas utilizadas:
+   Conforme o arquivo [requiriments.txt](./requirements.txt) gerado pelo pip, segue uma lista das bibliotecas utilizadas:
    - ﻿blinker v1.7.0
    - click v8.1.7
    - colorama v0.4.6
@@ -106,7 +106,7 @@ $ pip install -r requirements.txt
 
 ### 5. Crie o banco de dados MySQL
 
-- Abra a pasta [database_init](https://github.com/GustavoQS/website-pizzaria/tree/master/database_init) e execute o arquivo [init.sql](https://github.com/GustavoQS/website-pizzaria/blob/master/database_init/init.sql) para criar o banco de dados.
+- Abra a pasta [database_init](./database_init) e execute o arquivo [init.sql](./database_init/init.sql) para criar o banco de dados.
 
 - Opicional:
   - Execute os demais arquivos .sql para inserir alguns dados pré definidos, como itens do cardápio, alguns pedidos e seus respectiovos itens.
